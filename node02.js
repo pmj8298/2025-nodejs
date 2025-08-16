@@ -1,7 +1,19 @@
 const express = require('express')
 const logger = require('morgan')
+const path = require('path')
 const app = express()
 const port = 3000 // javascript로 한 nodejs의 port 번호
+
+// console.log(__dirname) // d:\pmj\nodejs
+
+const _path = path.join(__dirname, '/dist')
+// console.log(_path) // d:\pmj\nodejs\dist
+app.use(express.static(_path)) // dist안의 파일을 서비스 해주는 역할, 정적 서비스로 index.html 파일 서빙
+
+
+
+
+app.use(logger('tiny'))
 
 // '/' : 3000
 // '/' 접속하면 (req, res) => { res.send('Hello World!')}) 를 내보낸다
