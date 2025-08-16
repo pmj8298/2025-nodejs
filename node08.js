@@ -8,7 +8,27 @@ app.use(express.static(__dirname)) // __dirname : 현재 실행 중인 JS 파일
 
 app.get('/',(req,res)=>{
     fs.readdir(__dirname, {withFileTypes:true, encoding:'utf-8'}, (err,data)=>{
-        let list = `<h1>링크를 선택하세요</h1><ul>`
+        let list = `
+        <style>
+        h1{
+        color:pink;
+        }
+        ul{
+        list-style-type: none;
+        padding:10 10;
+        }
+        li{
+
+        padding:10 10;
+        }
+        a{
+        text-decoration:none;
+        color:black;
+        }
+       
+        
+        </style>
+        <h1>링크를 선택하세요</h1><ul>`
 
         // 위에 {withFileTypes:true} 넣으면 fs.stat ... 생략가능
         data.forEach(v=>{
