@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>단일 파일 업로드</h2>
+    <form action="up1" method="post" enctype="multipart/form-data">
+      <input type="file" name="ufile" id="" required />
+      <button type="submit">업로드</button>
+    </form>
+    <h2>멀티 파일 업로드</h2>
+    <form action="ups" method="post" enctype="multipart/form-data">
+      <input type="file" name="mfile" id="" multiple required />
+      <button type="submit">업로드</button>
+    </form>
+  </body>
+</html>

@@ -18,6 +18,7 @@
   "homepage": "https://github.com/pmj8298/2025-nodejs#readme",
   "dependencies": {
     "express": "^5.1.0",
-    "morgan": "^1.10.1"
+    "morgan": "^1.10.1",
+    "multer": "^2.0.2"
   }
 }
