@@ -49,7 +49,19 @@ function buildHtmlTree(dir, baseUrl="/uploads", depth = 0){
         if (item.isDirectory()){
             out += `<li class="f-name"><strong>${item.name}</strong>${buildHtmlTree(itemPath, urlPath, depth+1)}</li>`
         }else{
-            out += `<li><a href="${urlPath}" target="_blank">${item.name}</a></li>`
+            const ext = path.extname(item.name).toLowerCase()
+            if(ext === '.mp4'){
+                out += `<li>
+                <div class="video-box">
+                <video src="${urlPath}" controls width="400"></video>
+                <div>${item.name}</div>
+                </div>
+                <hr/>
+                </li>`
+            }else{
+
+                out += `<li><a href="${urlPath}" target="_blank">├${item.name}</a></li>`
+            }
         }
     })
     out += '</ul>'
@@ -97,6 +109,15 @@ app.get("/tree",(req,res)=>{
             .f-name:not(:has(> ul.hidden))>strong::before{
                 content:"📂"
             }    
+            .video{
+                width: 400px;
+                max-height: 300px;
+                overflow-y: auto;
+                padding: 5px;
+            }
+            .video-box video{
+                width: 100%
+            }
         </style>  
     </head>
         <body>
