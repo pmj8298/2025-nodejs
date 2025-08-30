@@ -55,16 +55,15 @@ function buildHtmlTree(dir, baseUrl="/uploads", depth = 0){
         }else{
             const ext = path.extname(item.name).toLowerCase()
             if(ext === '.mp4'){
-                out += `<li>
-                <div class="video-box">
-                <video src="${urlPath}" controls width="400"></video>
-                <div>${item.name}</div>
-                </div>
-                <hr/>
-                </li>`
+               out += `<li>
+               <hr/>
+               <div class="video-box">
+               <video src="${urlPath}" controls width="400"></video>
+               <div>${item.name}</div></div>
+               <hr/>
+               </li>`
             }else{
-
-                out += `<li><a href="${urlPath}" target="_blank">├${item.name}</a></li>`
+               out += `<li><a href="${urlPath}" target="_blank">└ ${item.name}</a></li>`
             }
         }
     })
@@ -83,7 +82,7 @@ app.get("/tree",(req,res)=>{
         <style>
             ul{
                 list-style-type:none;
-                margin-left: 20px ;
+                margin-left: 20px;
             }
             li{ margin: 3px 0;}
             a{ text-decoration: none; color:lightcoral;}
@@ -110,15 +109,16 @@ app.get("/tree",(req,res)=>{
             .hidden{
                 display: none;
             }
-            .f-name:not(:has(> ul.hidden))>strong::before{
-                content:"📂"
-            }    
-            .video .d-name{
-            margin : 10px 30px;
+            /* 자식 ul 이 보일 때(열림) → 아이콘 변경 */
+            .f-name:not(:has(> ul.hidden))>strong::before {
+                content: "📂";            
+            }
+            .v-name .d-name{
+                margin: 10px 30px;
                 width: 400px;
                 height: 500px;
                 overflow-y: auto;
-                padding: 5px;
+                padding: 5px;            
             }
             .video-box video{
                 width: 100%
