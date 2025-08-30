@@ -4,6 +4,57 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      body {
+        background-color: lightsteelblue;
+      }
+      h2,
+      form {
+        text-align: center;
+        margin: 0; /*h2는 기본적으로 마진을 가지고 있기 때문에 마진을 없애줌*/
+        padding: 20px;
+      }
+      #box {
+        width: 300px;
+        height: 400px;
+        background-color: rgb(190, 225, 247);
+        margin: 200px auto;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+      }
+      #inbox {
+        /*여기서 display: flex를 해야 자식들에 들어감 flex는 자식들에게 적용되기 때문*/
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /*flex에 gap 사용할 수 있음*/
+        height: 100%;
+      }
+      textarea,
+      #title {
+        outline: none;
+        border-radius: 10px;
+        padding: 5px;
+        border: 1px solid white;
+      }
+      textarea {
+        resize: none;
+        font-size: 1.3rem;
+      }
+      input[type="submit"] {
+        border-radius: 10px;
+        border: 1px solid #888;
+        cursor: pointer;
+        height: 30px;
+        padding: 5px;
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+      input[type="file"] {
+        border-top: 1px solid #797979;
+        padding-top: 8px;
+      }
+    </style>
   </head>
   <body>
     <h2>단일 파일 업로드</h2>
@@ -16,5 +67,7 @@
       <input type="file" name="mfile" id="" multiple required />
       <button type="submit">업로드</button>
     </form>
+    <hr />
+    <h2><a href="/tree">업로드된 파일 확인하기</a></h2>
   </body>
 </html>
